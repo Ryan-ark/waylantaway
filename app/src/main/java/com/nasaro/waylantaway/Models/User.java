@@ -30,9 +30,9 @@ public class User
     public static User fromCursor(Cursor cursor)
     {
         User user = new User();
-        user.id = cursor.getInt(0);
-        user.name = cursor.getString(1);
-        user.email = cursor.getString(2);
+        user.id = cursor.getInt(cursor.getColumnIndexOrThrow("id"));
+        user.name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
+        user.email = cursor.getString(cursor.getColumnIndexOrThrow("email"));
         return user;
     }
 }

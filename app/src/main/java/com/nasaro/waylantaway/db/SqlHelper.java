@@ -5,6 +5,8 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.nasaro.waylantaway.Models.Car;
 import com.nasaro.waylantaway.Models.User;
 
 
@@ -16,11 +18,14 @@ public class SqlHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(User.onCreate);
+        db.execSQL(Car.create);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL(User.onDrop);
+        db.execSQL(Car.drop);
+        onCreate(db);
     }
 
     public long insert(String table, ContentValues contentValues)
